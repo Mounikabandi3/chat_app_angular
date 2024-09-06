@@ -1,0 +1,11 @@
+<div class="container">
+    <!-- Display the form if isFormVisible is true -->
+    <app-name-form *ngIf="isFormVisible" (submitName)="onSubmitName($event)"></app-name-form>
+  
+    <!-- Display the left navigation bar if isFormVisible is false -->
+    <app-left-nav *ngIf="!isFormVisible" [users]="users" (selectUser)="onSelectUser($event)" (startConversation)="onStartConversation()"></app-left-nav>
+  
+    <!-- Display the chat component if isChatVisible is true -->
+    <app-chat *ngIf="isChatVisible"></app-chat>
+  </div>
+  

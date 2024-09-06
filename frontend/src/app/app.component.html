@@ -1,0 +1,15 @@
+<div class="main-container">
+  <!-- Display the name form if no user is logged in -->
+  <app-name-form 
+    *ngIf="!currentUsername" 
+    (submitName)="onSubmitName($event)">
+  </app-name-form>
+
+  <!-- Display the left navigation if a user is logged in -->
+  <app-left-nav 
+    *ngIf="currentUsername" 
+    [username]="currentUsername" 
+    [users]="users" 
+    (startConversation)="onStartConversation($event)">
+  </app-left-nav>
+</div>

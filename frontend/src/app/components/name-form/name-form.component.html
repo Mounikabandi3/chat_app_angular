@@ -1,0 +1,10 @@
+<form (ngSubmit)="handleSubmit($event)">
+  <label for="name">Enter your name:</label>
+  <input 
+    id="name" 
+    [(ngModel)]="name" 
+    name="name" 
+    required 
+  />
+  <button type="submit">Submit</button>
+</form>

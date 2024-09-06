@@ -1,0 +1,12 @@
+<div *ngIf="users.length > 0; else noUsers">
+  <ul>
+    <li *ngFor="let user of users">
+      <span>{{ user.name }}</span>
+      <button (click)="handleSelect(user)">Select</button>
+    </li>
+  </ul>
+  <button (click)="handleClose()">Close</button>
+</div>
+<ng-template #noUsers>
+  <p>No users available.</p>
+</ng-template>

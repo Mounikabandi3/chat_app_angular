@@ -1,0 +1,59 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+  
+  .users-list-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+  }
+  
+  .popup-content {
+    padding: 20px;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .users-list {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  .user {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .user:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .close-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    background-color: #0056b3;
+  }
+  

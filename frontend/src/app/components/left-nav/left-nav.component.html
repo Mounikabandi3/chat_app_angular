@@ -1,0 +1,29 @@
+<div class="left-nav">
+  <h3>Users List</h3>
+
+  <!-- Display the logged-in user -->
+  <div *ngIf="username">
+    <p>Logged in as: {{ username }}</p>
+  </div>
+
+  <!-- Check if there are any users in the list -->
+  <div *ngIf="users.length > 0; else noUsers">
+    <div *ngFor="let user of users">
+      <!-- Display each user except the current user -->
+      <div *ngIf="user.name !== username">
+        {{ user.name }}
+        <button
+          (click)="handleSelectUser(user.name)"
+          [disabled]="selectedUser === user.name"
+        >
+          Start Conversation
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- If no users are available, show this message -->
+  <ng-template #noUsers>
+    <p>No users available.</p>
+  </ng-template>
+</div>
