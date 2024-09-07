@@ -38,11 +38,15 @@ mongoose_1.default.connect(mongoUri)
 app.post('/api/users', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name } = req.body;
     try {
+        if (!name) {
+            return res.status(400).json({ error: 'Name is required' });
+        }
         const user = new models_1.User({ name });
         yield user.save();
         res.status(201).json(user);
     }
     catch (error) {
+        console.error('Error storing user:', error);
         res.status(500).json({ error: 'Failed to store user name' });
     }
 }));
