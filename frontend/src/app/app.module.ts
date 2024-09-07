@@ -23,6 +23,7 @@ import { ChatInterfaceComponent } from './components/chat-interface/chat-interfa
     CommonModule, // Ensure CommonModule is imported
     FormsModule, // Include FormsModule if using template-driven forms
     ReactiveFormsModule,
+    HttpClientModule
      // Include ReactiveFormsModule if using reactive forms
   ],
   providers: [],

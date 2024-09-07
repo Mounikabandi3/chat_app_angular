@@ -2,6 +2,16 @@
   display: flex;
 }
 
+app-left-nav {
+  width: 50%; /* Left side for user navigation */
+}
+
+app-chat-interface {
+  width: 50%; /* Right side for the chat interface */
+  border-left: 1px solid #ccc;
+  padding-left: 20px;
+}
+
 .left-nav {
   width: 200px;
   /* Add additional styles for left navigation */
@@ -51,3 +61,24 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.chat-container {
+  position: fixed; /* or absolute, depending on your layout */
+  bottom: 0;
+  right: 0;
+  width: 300px; /* Adjust as needed */
+  height: 400px; /* Adjust as needed */
+  background-color: #fff; /* Adjust as needed */
+  border: 1px solid #ccc; /* Adjust as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.chat-container app-chat-interface {
+  width: 100%;
+  height: 100%;
+}
+

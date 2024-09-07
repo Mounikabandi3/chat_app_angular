@@ -1,10 +1,25 @@
+/* Parent container for left navigation and chat */
+.app-container {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Left navigation styling (20% of the width) */
+app-left-nav {
+  width: 20%;
+  background-color: #f0f0f0; /* Example background color for the nav */
+}
+
+/* Chat container styling (80% of the width) */
 .chat-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: #fff;
-  }
-  
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  height: 100%;
+}
   .chat-header {
     background-color: #f1f1f1;
     padding: 10px;

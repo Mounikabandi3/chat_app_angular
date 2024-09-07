@@ -26,10 +26,15 @@ app.post('/api/users', async (req, res) => {
   const { name } = req.body;
 
   try {
+    if (!name) {
+      return res.status(400).json({ error: 'Name is required' });
+    }
+
     const user = new User({ name });
     await user.save();
     res.status(201).json(user);
   } catch (error) {
+    console.error('Error storing user:', error);
     res.status(500).json({ error: 'Failed to store user name' });
   }
 });

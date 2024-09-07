@@ -12,4 +12,6 @@
     [users]="users" 
     (startConversation)="onStartConversation($event)">
   </app-left-nav>
+  <app-chat-interface *ngIf="isChatVisible" [selectedUser]="selectedUser"></app-chat-interface>
+
 </div>
