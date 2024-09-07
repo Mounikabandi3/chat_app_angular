@@ -1,0 +1,21 @@
+<!-- message.component.html -->
+<div>
+    <h2>Messages</h2>
+    <div *ngFor="let message of messages">
+      <p>{{ message.content }} <small>from {{ message.from }} to {{ message.to }}</small></p>
+    </div>
+  
+    <input [(ngModel)]="newMessage" placeholder="Type a message">
+    <button (click)="sendMessage()">Send</button>
+  
+    <h2>Requests</h2>
+    <div *ngFor="let request of requests">
+      <p>{{ request.from }} wants to chat with you</p>
+      <button (click)="respondToRequest(request._id, 'accepted')">Accept</button>
+      <button (click)="respondToRequest(request._id, 'rejected')">Reject</button>
+    </div>
+  
+    <input [(ngModel)]="recipient" placeholder="Recipient username">
+    <button (click)="startConversation()">Start Conversation</button>
+  </div>
+  

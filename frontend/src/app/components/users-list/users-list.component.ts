@@ -21,4 +21,8 @@ export class UsersListComponent {
   handleClose(): void {
     this.close.emit();
   }
+  startConversation(user: string): void {
+    // Implement functionality to start a conversation
+    console.log(`Start conversation with ${user}`);
+  }
 }

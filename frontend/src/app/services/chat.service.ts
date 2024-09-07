@@ -18,4 +18,22 @@ export class ChatService {
   getUsers(): Observable<any> {
     return this.http.get(`${this.apiUrl}/users`);
   }
+   sendMessage(from: string, to: string, content: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/messages`, { from, to, content });
+  }
+
+  getMessages(user: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/messages/${user}`);
+  }
+  sendRequest(sender: string, receiver: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/messages/request`, { sender, receiver });
+  }
+
+  respondToRequest(requestId: string, response: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/messages/respond`, { requestId, response });
+  }
+
+  getRequests(user: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/messages/requests/${user}`);
+  }
 }

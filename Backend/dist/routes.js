@@ -32,11 +32,11 @@ userRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 }));
 // Message routes
-messageRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+messageRouter.post('/send', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { from, to, content } = req.body;
-        const key = crypto_1.default.randomBytes(32); // Generate a random key for AES encryption
-        const iv = crypto_1.default.randomBytes(16); // Generate a random IV
+        const key = crypto_1.default.randomBytes(32);
+        const iv = crypto_1.default.randomBytes(16);
         const cipher = crypto_1.default.createCipheriv('aes-256-cbc', key, iv);
         let encrypted = cipher.update(content, 'utf8', 'hex');
         encrypted += cipher.final('hex');
@@ -52,11 +52,46 @@ messageRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function
         res.status(400).send(error);
     }
 }));
-messageRouter.get('/:user', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+messageRouter.post('/request', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { sender, receiver } = req.body;
+        const requestMessage = new models_1.Message({
+            from: sender,
+            to: receiver,
+            content: 'Conversation request',
+            timestamp: new Date(),
+        });
+        yield requestMessage.save();
+        res.status(201).send(requestMessage);
+    }
+    catch (error) {
+        res.status(400).send(error);
+    }
+}));
+messageRouter.post('/respond', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { requestId, response } = req.body; // response can be 'accepted' or 'rejected'
+        const message = yield models_1.Message.findById(requestId);
+        if (message) {
+            // Handle response here
+            if (response === 'accepted') {
+                // Add additional logic if needed
+            }
+            res.status(200).send({ message: 'Response received' });
+        }
+        else {
+            res.status(404).send({ error: 'Request not found' });
+        }
+    }
+    catch (error) {
+        res.status(400).send(error);
+    }
+}));
+messageRouter.get('/requests/:user', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { user } = req.params;
-        const messages = yield models_1.Message.find({ $or: [{ from: user }, { to: user }] });
-        res.send(messages);
+        const requests = yield models_1.Message.find({ to: user, content: 'Conversation request' });
+        res.send(requests);
     }
     catch (error) {
         res.status(500).send(error);

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NameFormComponent } from './components/name-form/name-form.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { ChatInterfaceComponent } from './components/chat-interface/chat-interface.component'; // Import ChatInterfaceComponent
+import { MessageComponent } from './components/message/message.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ChatInterfaceComponent } from './components/chat-interface/chat-interfa
     AppComponent,
     NameFormComponent,
     UsersListComponent,
-    ChatInterfaceComponent
+    ChatInterfaceComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
