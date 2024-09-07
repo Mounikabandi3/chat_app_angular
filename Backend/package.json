@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node dist/server.ts",
     "dev": "ts-node src/server.ts", 
-    "vercel-build": "npm run build" 
+    "vercel-build": "Hello" 
   },
   "dependencies": {
     "@types/express": "^4.17.21",
