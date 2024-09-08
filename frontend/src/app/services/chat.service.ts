@@ -1,4 +1,3 @@
-// chat.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ChatService {
-  private apiUrl = 'http://localhost:3000'; // Match this with your backend
+  private apiUrl = 'http://localhost:3000/api'; // Adjust if your backend route prefix is different
 
   constructor(private http: HttpClient) { }
 
@@ -18,22 +17,24 @@ export class ChatService {
   getUsers(): Observable<any> {
     return this.http.get(`${this.apiUrl}/users`);
   }
-   sendMessage(from: string, to: string, content: string): Observable<any> {
+
+  sendMessage(from: string, to: string, content: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/messages`, { from, to, content });
   }
 
   getMessages(user: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/messages/${user}`);
   }
+
   sendRequest(sender: string, receiver: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/messages/request`, { sender, receiver });
+    return this.http.post(`${this.apiUrl}/requests`, { sender, receiver });
   }
 
   respondToRequest(requestId: string, response: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/messages/respond`, { requestId, response });
+    return this.http.post(`${this.apiUrl}/requests/respond`, { requestId, response });
   }
 
   getRequests(user: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/messages/requests/${user}`);
+    return this.http.get(`${this.apiUrl}/requests/${user}`);
   }
 }
