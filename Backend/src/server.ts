@@ -22,7 +22,7 @@ router.get('/users', (req, res) => userController.getAllUsers(req, res));
 app.use('/api', router);
 
 // MongoDB connection
-const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://prembandi763:IzYFZTgAZLfm37lq@cluster0.d5pti.mongodb.net/chat_db?retryWrites=true&w=majority';
+const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://prembandi763:IzYFZTgAZLfm37lq@cluster0.d5pti.mongodb.net/chat_db?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(mongoUri)
   .then(() => console.log('Mongoose is connected'))
   .catch(err => console.error('Mongoose connection error:', err));
